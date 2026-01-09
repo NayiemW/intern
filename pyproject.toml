@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vortex-runner"
+version = "0.1.0"
+description = "SSH-based executor for archer-vortex"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+vortex-run = "vortex_runner.cli:main"
+intern = "vortex_runner.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]

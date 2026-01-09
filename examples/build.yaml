@@ -1,0 +1,11 @@
+# Build job - runs Next.js production build
+name: "build"
+# repo_path: Uses VORTEX_REPO_PATH env var or default
+
+commands:
+  - "node -v"
+  - "npm -v"
+  - "npm run build"
+
+artifacts:
+  - ".next/BUILD_ID"

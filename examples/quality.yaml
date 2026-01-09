@@ -1,0 +1,11 @@
+# Quality gates job - runs all quality checks
+name: "quality-gates"
+# repo_path: Uses VORTEX_REPO_PATH env var or default
+
+commands:
+  - run: "npm run lint"
+    allow_fail: false
+  - run: "npm run typecheck"
+    allow_fail: false
+  - run: "npm run build"
+    allow_fail: false

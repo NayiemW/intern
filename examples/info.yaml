@@ -1,0 +1,11 @@
+# Info job - quick system check
+name: "system-info"
+# repo_path: Uses VORTEX_REPO_PATH env var or default
+
+commands:
+  - "whoami"
+  - "node -v"
+  - "npm -v"
+  - "pwd"
+  - "ls -la"
+  - "cat package.json | head -20"
