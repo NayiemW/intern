@@ -111,9 +111,14 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         if not command:
             return [TextContent(type="text", text="Error: command is required")]
 
+        # Don't require cwd for simple commands (curl, ping, etc.)
+        # Only use cwd for npm/git commands that need a project context
+        needs_cwd = any(cmd in command.lower() for cmd in ["npm", "git", "node", "npx", "pnpm"])
+        cwd = executor.config.default_repo_path if needs_cwd else None
+
         exit_code, stdout, stderr, duration = executor._ssh_command(
             command,
-            cwd=executor.config.default_repo_path
+            cwd=cwd
         )
 
         result = {
